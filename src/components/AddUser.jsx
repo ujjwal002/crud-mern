@@ -7,7 +7,7 @@ import {
   styled,
   Button,
 } from "@mui/material";
-
+import { useState } from "react";
 const Container = styled(FormGroup)`
   width: 50%;
   margin: 5% auto 0 auto;
@@ -15,30 +15,41 @@ const Container = styled(FormGroup)`
     margin-top: 20px;
   }
 `;
-
+const defaultvalue = {
+  name: "",
+  username: "",
+  email: "",
+  phone: "",
+};
 const AddUser = () => {
-  const onValueChange = () => {};
+  const [user, setUser] = useState(defaultvalue);
+  const onValueChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+  const adduserdetails = () => {};
   return (
     <Container>
       <Typography variant="h4">Add user</Typography>
       <FormControl>
         <InputLabel>Name</InputLabel>
-        <Input onChange={() => onValueChange()} />
+        <Input onChange={(e) => onValueChange(e)} name="name" />
       </FormControl>
       <FormControl>
         <InputLabel>Username</InputLabel>
-        <Input />
+        <Input onChange={(e) => onValueChange(e)} name="username" />
       </FormControl>
       <FormControl>
         <InputLabel>Email</InputLabel>
-        <Input />
+        <Input onChange={(e) => onValueChange(e)} name="email" />
       </FormControl>
       <FormControl>
         <InputLabel>Phone</InputLabel>
-        <Input />
+        <Input onChange={(e) => onValueChange(e)} name="phone" />
       </FormControl>
       <FormControl>
-        <Button variant="contained">Add User</Button>
+        <Button variant="contained" onClick={() => adduserdetails()}>
+          Add User
+        </Button>
       </FormControl>
     </Container>
   );
