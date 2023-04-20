@@ -8,6 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import { useState } from "react";
+import { addUser } from "../service/api";
 const Container = styled(FormGroup)`
   width: 50%;
   margin: 5% auto 0 auto;
@@ -26,7 +27,9 @@ const AddUser = () => {
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  const adduserdetails = () => {};
+  const adduserdetails = () => {
+    addUser();
+  };
   return (
     <Container>
       <Typography variant="h4">Add user</Typography>
